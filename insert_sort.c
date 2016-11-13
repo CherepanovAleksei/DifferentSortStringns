@@ -1,26 +1,6 @@
- #include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
-void bubble_sort(char **array, int length)
-
-{
-    int i;
-    int j;
-    for (i = 0; i < length-1; i++)
-    {
-
-        for (j = 0; j < length-i-1; j++)
-        {
-            if (strcmp(array[j],array[j+1])>0)
-            {
-                char* swap_char=array[j];
-                array[j]=array[j+1];
-                array[j+1]=swap_char;
-            }
-        }
-     }
- }
 
 void insert_sort(char **array, int length)
 
@@ -103,31 +83,31 @@ int main()
         int k;
         while(number < number_of_strings)
         {
-
-         array[number] = malloc(sizeof(char)*(string_length[number])); // allocating memory for a string
-         for(k=0;k<string_length[number]-1;k++)
-         { // filling the array (char by char)
-          array[number][k]=fgetc(myfile);
-         }
-         symbol = fgetc(myfile); //считываем \n
-         array[number][k]='\0';
-         number++;
+        	array[number] = malloc(sizeof(char)*(string_length[number])); // allocating memory for a string
+         	for(k=0;k<string_length[number]-1;k++)
+        	{
+        		array[number][k]=fgetc(myfile);
+        	}
+        	symbol = fgetc(myfile); //считываем \n
+        	array[number][k]='\0';
+       		number++;
         }
 
         insert_sort(array, number_of_strings);
 
-for(k=0;k<number_of_strings;k++)
-{
-    printf("%s\n",array[k]);
-}
+		for(k=0;k<number_of_strings;k++)
+		{
+			printf("%s\n",array[k]);
+		}
 
 
-                for(k=0;k<number_of_strings;k++)
-        {
-        free(array[k]);
-        }
-    free(string_length);
-    free(array);
+		for(k=0;k<number_of_strings;k++)
+		{
+			free(array[k]);
+		}
+	
+		free(string_length);
+		free(array);
     }
     fclose(myfile);
     return 0;
