@@ -1,6 +1,6 @@
 /**
 *
-* bubble_sort by Cherepanov Aleksei (PI-171)
+* insert_sort by Cherepanov Aleksei (PI-171)
 *
 **/
 
