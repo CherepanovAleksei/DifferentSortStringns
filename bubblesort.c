@@ -1,3 +1,9 @@
+/**
+*
+* bubble_sort by Cherepanov Aleksei (PI-171)
+*
+**/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
