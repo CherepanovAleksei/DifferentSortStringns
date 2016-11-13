@@ -2,24 +2,39 @@
 #include <stdlib.h>
 #include <string.h>
 
-void bubble_sort(char **array, int length)
+
+void merge_sort(char **array,int left, int right)
 {
-    int i; //счётчик №1
-    int j; //счетчик №2
-    for (i = 0; i < length-1; i++)
+    if(left!=right) //проверяем, что работаем не с одной строкой
     {
-        for (j = 0; j < length-i-1; j++)
+        int middle = (left + right)/2;  //определяем серединный элемент
+
+        merge_sort(array, left, middle);       //разделяем и сортируем левую часть
+        merge_sort(array, middle + 1, right); //правую
+
+        char **buffarray=malloc(sizeof(char*)*(right+1));  //память для массива-буфера
+        int first_of_left=left; //начало левой части
+        int first_of_right=middle+1;
+        int counter; 
+        for(counter=left; counter<=right;counter++) //проходим от начала до конца
         {
-            if (strcmp(array[j],array[j+1])>0)  //сравниваем
+            if (first_of_left <= middle && (first_of_right > right || strcmp(array[first_of_left],array[first_of_right]) < 0))
             {
-                char* swap_char=array[j];  //меняем местами
-                array[j]=array[j+1];
-                array[j+1]=swap_char;
+            buffarray[counter]=array[first_of_left]; //кладем в буферный массив элемент из левой части, сдвигаем
+            first_of_left++;
+            }
+            else
+            {
+                buffarray[counter]=array[first_of_right];  //кладем в буферный массив элемент из правой части, сдвигаем
+                first_of_right++;
             }
         }
-     }
- }
-
+        for(counter=left; counter<=right; counter++)  //возвращаем из буферного масива в рабочий
+        {
+            array[counter]=buffarray[counter];
+        }
+    }
+}
 
 int main()
 {
@@ -91,8 +106,8 @@ int main()
        		number++;
         }
 
-        bubble_sort(array, number_of_strings); //вызываем сортировку
-
+        merge_sort(array, 0, number_of_strings-1);
+		
 		for(k=0;k<number_of_strings;k++) //выводим отсортированный массив
 		{
 			printf("%s\n",array[k]); 
