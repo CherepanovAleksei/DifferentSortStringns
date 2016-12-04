@@ -5,6 +5,7 @@ _**by Cherepanov Aleksei**_
 Valgrind and Gprof check of every sort(test with 100000 strings(length=(+/-)200 symbols)
 ##Bubble sort
 ###Valgrind:
+
 ==4244== | 
 ==4244== | HEAP SUMMARY:
 ==4244== |     in use at exit: 0 bytes in 0 blocks
@@ -14,6 +15,7 @@ Valgrind and Gprof check of every sort(test with 100000 strings(length=(+/-)200 
 ==4244== | 
 ==4244== | For counts of detected and suppressed errors, rerun with: -v
 ==4244== | ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
 ###Gprof:
 **Flat  profile:**
 (Each sample counts as 0.01 seconds)
