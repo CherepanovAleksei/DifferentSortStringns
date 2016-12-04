@@ -1,15 +1,13 @@
 # sort
 strings sorting algorithm
 
-#Bubble sort
-
+Bubble sort
+Flat  profile:
 
 
 
 Each sample counts as 0.01 seconds.
 
-Flat  profile
------- | ------ | ------ | ------ | ------ | ------ | ------ 
    time | cumulative seconds | self seconds | calls | self s/call | total s/call | name 
 ------ | ------ | ------ | ------ | ------ | ------ | ------ 
  99.64 |  53.62 |  53.62 |  1 |  53.62 |  53.62 |  bubble_sort 
