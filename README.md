@@ -2,7 +2,7 @@
 **Sort a very big number of very big strings with different algorithms**
 _**by Cherepanov Aleksei**_
 
-* Valgrind and Gprof check of every sort(test with 100000 strings(length=(+/-)200 symbols)
+* Valgrind and Gprof check of every sort(test with 100000 strings(length=(+/-)200 symbols) *
 ##Bubble sort
 ###Valgrind:
 ==4244== | 
