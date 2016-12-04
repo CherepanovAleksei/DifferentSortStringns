@@ -1,7 +1,7 @@
 # sort
 strings sorting algorithm
 
-Bubble sort
+#Bubble sort
 
 
 
