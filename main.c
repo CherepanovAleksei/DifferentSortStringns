@@ -1,6 +1,10 @@
 /**
 *
-* sort by Cherepanov Aleksei (PI-171)
+* Sort a very big number of very big strings with different algorithms
+*
+* by Cherepanov Aleksei (PI-171)
+*
+* mrneumann888@gmail.com
 *
 **/
 
@@ -22,99 +26,117 @@ int main(int argc, char **argv)
         exit(1);
     }
 
+	//open file
     FILE *myfile;
-    myfile = fopen (argv[2], "r");  //открываем файл
+    myfile = fopen (argv[2], "r");
+
     if (myfile == NULL)
     {
-        printf("Cannot open file.\n");  //проверяем наличие
+        printf("Cannot open file.\n");
         exit(1);
     }
 
-    int number_of_strings=atoi(argv[1]);
-    int col=0;  //реальное количество строк в файле
-    char symbol='o';  //переменная для посимвольного считывания
-    while (symbol!=EOF)
+	//check real number of strings in file
+    int number_of_strings = atoi(argv[1]);
+    int col = 0;
+    char symbol = 'o';
+
+    while (symbol != EOF)
     {
-        symbol=fgetc(myfile);
-        if (symbol == '\n')  //считаем реальное количество строк в файле
+        symbol = fgetc(myfile);
+
+        if (symbol == '\n')
         {
-            col++;  //реальное количество строк в файле
+            col++;
         }
     }
+
     if (col  < number_of_strings)
     {
-        number_of_strings = col;  //сравнение числа строк, которое получено в файле и которое есть на самом деле
+        number_of_strings = col;
     }
 
-    rewind(myfile);  //"ставим курсор" в начало файла
+    rewind(myfile);
+	
+	//array of number of symbols in each string
+    int *string_length = malloc(sizeof(int) * number_of_strings);
+    int i = 0;
+    int counter_of_char = 0;
+    int counter = 0;
 
-    int *string_length=malloc(sizeof(int)*number_of_strings); // массив для длины каждый строки
-    int i=0; //счетчик для строки
-    int counter_of_char=0; //количество символов в строке
-    int counter=0;
     while (counter < number_of_strings)
     {
-        symbol=fgetc(myfile); //посимвольно считываем
-        counter_of_char++; //считаем кол-во символов
+        symbol = fgetc(myfile);
+        counter_of_char++;
+
         if(symbol == '\n')
         {
-            string_length[i]=counter_of_char;  //заполняем массив количеством символов в строке
+            string_length[i] = counter_of_char;
             i++;
-            counter_of_char=0; //обнуляем счетчик символов
+            counter_of_char = 0;
             counter++;
         }
     }
 
-    rewind(myfile);  //"ставим курсор" в начало файла
-
-    char **array=malloc(sizeof(char*)*number_of_strings);  //выделяем память для хранения строк
-    int number=0;
+    rewind(myfile);
+	
+	//fill array of strings
+    char **array = malloc(sizeof(char*)*number_of_strings);
+    int number = 0;
     int k;
+
     while(number < number_of_strings)
     {
-        array[number] = malloc(sizeof(char)*(string_length[number])); // индивидуально выделяем память для каждой строки
-        for(k=0; k<string_length[number]-1; k++)
+        array[number] = malloc(sizeof(char) * (string_length[number]));
+
+        for(k = 0; k < string_length[number] - 1; k++)
         {
-            array[number][k]=fgetc(myfile); //посимвольно заполняем массив
+            array[number][k] = fgetc(myfile);
         }
-        symbol = fgetc(myfile); //считываем \n
-        array[number][k]='\0'; //добавляем нулевой символ в конце
+
+        symbol = fgetc(myfile);
+        array[number][k] = '\0';
         number++;
     }
 
     printf("Choose method of sort:\n1:bubble_sort\n2:insert_sort\n3:merge_sort\n4:quick_sort\n");
-    scanf("%d",&k);
+    scanf("%d", &k);
+
     switch( k )
     {
         case 1:
             bubble_sort(array, number_of_strings);
             break;
+
         case 2 :
             insert_sort(array, number_of_strings);
             break;
+
         case 3 :
-            merge_sort(array, 0, number_of_strings-1);
+            merge_sort(array, 0, number_of_strings - 1);
             break;
+
         case 4 :
-            quick_sort(array, number_of_strings); //вызываем сортировку
+            quick_sort(array, number_of_strings);
             break;
     }
 
-
-    for(k=0; k<number_of_strings; k++) //выводим отсортированный массив
+	//output
+    for(k = 0; k < number_of_strings; k++)
     {
-        printf("%s\n",array[k]);
+        printf("%s\n", array[k]);
     }
 
-
-    for(k=0; k<number_of_strings; k++) //очищаем память
+	//free
+    for(k = 0; k < number_of_strings; k++)
     {
         free(array[k]);
     }
+
     free(array);
     free(string_length);
 
-
     fclose(myfile);
+
     return 0;
 }
