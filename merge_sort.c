@@ -21,7 +21,7 @@ void merge_sort(char **array, int left, int right)
     {
         int middle = (left + right) / 2;
 		
-		//sort left and right half of input array
+	//sort left and right half of input array
         merge_sort(array, left, middle);
         merge_sort(array, middle + 1, right);
 		
@@ -30,7 +30,7 @@ void merge_sort(char **array, int left, int right)
         int first_of_right = middle + 1;
         int counter;
 		
-		//merge sort
+	//merge sort
         for(counter = left; counter <= right; counter++)
         {
             if (first_of_left <= middle && (first_of_right > right || strcmp(array[first_of_left], array[first_of_right]) < 0))
