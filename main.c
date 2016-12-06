@@ -26,7 +26,7 @@ int main(int argc, char **argv)
         exit(1);
     }
 
-	//open file
+    //open file
     FILE *myfile;
     myfile = fopen (argv[2], "r");
 
@@ -36,7 +36,7 @@ int main(int argc, char **argv)
         exit(1);
     }
 
-	//check real number of strings in file
+    //check real number of strings in file
     int number_of_strings = atoi(argv[1]);
     int col = 0;
     char symbol = 'o';
@@ -58,7 +58,7 @@ int main(int argc, char **argv)
 
     rewind(myfile);
 	
-	//array of number of symbols in each string
+    //array of number of symbols in each string
     int *string_length = malloc(sizeof(int) * number_of_strings);
     int i = 0;
     int counter_of_char = 0;
@@ -80,7 +80,7 @@ int main(int argc, char **argv)
 
     rewind(myfile);
 	
-	//fill array of strings
+    //fill array of strings
     char **array = malloc(sizeof(char*)*number_of_strings);
     int number = 0;
     int k;
@@ -121,13 +121,13 @@ int main(int argc, char **argv)
             break;
     }
 
-	//output
+    //output
     for(k = 0; k < number_of_strings; k++)
     {
         printf("%s\n", array[k]);
     }
 
-	//free
+    //free
     for(k = 0; k < number_of_strings; k++)
     {
         free(array[k]);
