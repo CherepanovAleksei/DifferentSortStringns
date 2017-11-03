@@ -1,11 +1,11 @@
 # Sort
-**Sort a very big number of very big strings with different algorithms**
+**Sort a very big number of very big strings with different algorithms(bubble, merge, insert, quick)**
 
 _**by Cherepanov Aleksei**_
 
 Valgrind and Gprof check of every sort(test with 100000 strings(length=(+/-)200 symbols)
-##Bubble sort
-###Valgrind:
+## Bubble sort
+### Valgrind:
 
 _ | _
 ------ | ------
@@ -19,7 +19,7 @@ _ | _
 ==4244== | For counts of detected and suppressed errors, rerun with: -v
 ==4244== | ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 
-###Gprof:
+### Gprof:
 **Flat  profile:**
 
 (Each sample counts as 0.01 seconds)
@@ -40,8 +40,8 @@ granularity: each sample hit covers 2 byte(s) for 0.02% of 53.99 seconds
  |  |  53.62 |  0.00 |  1/1 |  main  [1]
  [2] |  99.3 |  53.62 |  0.00 |  1 |  bubble_sort  [2]
  
-##Insert sort
-###Valgrind:
+## Insert sort
+### Valgrind:
 
 _ | _
 ------ | ------
@@ -55,7 +55,7 @@ _ | _
 ==9911== | For counts of detected and suppressed errors, rerun with: -v
 ==9911== | ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 
-###Gprof:
+### Gprof:
 **Flat  profile:**
 
 Each sample counts as 0.01 seconds.
@@ -76,8 +76,8 @@ granularity: each sample hit covers 2 byte(s) for 0.10% of 10.44 seconds
  |  |  10.12 |  0.00 |  1/1 |  main  [1]
  [2] |  96.9 |  10.12 |  0.00 |  1 |  insert_sort  [2]
  
-##Merge sort
-###Valgrind:
+## Merge sort
+### Valgrind:
 
 _ | _
 ------ | ------
@@ -91,7 +91,7 @@ _ | _
 ==10998== | For counts of detected and suppressed errors, rerun with: -v
 ==10998== | ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 
-###Gprof:
+### Gprof:
 **Flat  profile:**
 
 Each sample counts as 0.01 seconds.
@@ -114,8 +114,8 @@ granularity: each sample hit covers 2 byte(s) for 2.85% of 0.35 seconds
  [2] |  11.4 |  0.04 |  0.00 |  1+199998 |  merge_sort  [2]
  |  |  |  |  199998 |  merge_sort  [2]
  
-##Quick sort
-###Valgrind:
+## Quick sort
+### Valgrind:
 
 _ | _
 ------ | ------
@@ -129,7 +129,7 @@ _ | _
 ==11187== | For counts of detected and suppressed errors, rerun with: -v
 ==11187== | ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 
-###Gprof:
+### Gprof:
 **Flat  profile:**
 
 Each sample counts as 0.01 seconds.
